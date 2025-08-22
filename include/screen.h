@@ -11,13 +11,23 @@ struct screen_struct
     object ***matrix;
 };
 
+struct log_struct
+{
+    coordinates begin_coordinates;
+    long top;
+    char *text; 
+    //TODO координата крусора еще нужна
+};
+
 extern struct screen_struct screen;
+extern struct log_struct log_field;
+extern coordinates scene_begin_coordinates;
 
 object *get_object_on_screen(coordinates *coordinates);
 void init_screen(void);
 void update_screen(void);
 void set_scene(scene_struct *scene);
-void print(object *object);
+void print(object *object, int y, int x);
 void update(void);
 
 #endif

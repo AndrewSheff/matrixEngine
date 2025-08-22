@@ -4,10 +4,10 @@
 #include "scene.h"
 
 scene_struct scene_one = {.square.y = 5, .square.x = 10};
-char **scene_one_pattern[5][10] =
+char *scene_one_pattern[5] =
     {"2222222222",
      "2111111112",
-     "2111111112",
+     "2111121112",
      "2111111112",
      "2222222222"};
 

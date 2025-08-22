@@ -13,7 +13,7 @@ object *get_object_by_id(char c)
     }
 }
 
-object player = {.coordinates.x = 0, .coordinates.y = 0, .value = '@', .bgcolor = -1, .color = 226, .is_solid = false};
+object player = {.value = '@', .bgcolor = -1, .color = 226, .is_solid = false};
 
 object empty = {.id = ' ', .is_solid = false, .value = ' ', .color = 0, .bgcolor = 0};
 
