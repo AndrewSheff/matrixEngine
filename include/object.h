@@ -19,6 +19,7 @@ typedef struct
 
 typedef struct
 {
+    char id;
     coordinates old_coordinates;
     coordinates coordinates;
     bool is_solid;
@@ -27,7 +28,12 @@ typedef struct
     char value;
 } object;
 
+object* get_object_by_id(char c);
+
+
 extern object player;
 extern object empty;
+extern object floor_concrete;
+extern object wall_concrete;
 
 #endif

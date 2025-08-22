@@ -2,12 +2,16 @@
 #include "object.h"
 #include "screen.h"
 #include "entity.h"
+#include "scene.h"
 
 int main(void)
 {
     printf("\033[2J");
 
     init_screen();
+    init_scene(&scene_one, &scene_one_pattern);
+    set_scene(&scene_one);
+    update_screen();
     init_entities();
     place(&player, player.coordinates);
     update();

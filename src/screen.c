@@ -3,12 +3,13 @@
 #include <unistd.h>
 #include <sys/ioctl.h>
 #include "screen.h"
-#include "entity.h" 
+#include "entity.h"
 
 struct winsize w;
 struct screen_struct screen = {};
 
-object *get_object_on_screen(coordinates *coordinates) {
+object *get_object_on_screen(coordinates *coordinates)
+{
     return screen.matrix[coordinates->y][coordinates->x];
 }
 
@@ -36,12 +37,39 @@ void init_screen(void)
     {
         screen.matrix[i] = calloc(w.ws_col, sizeof(object *));
         for (int j = 0; j < screen.square.x; j++)
-        {   
-            //TODO читать из файла уровень
+        {
             screen.matrix[i][j] = &empty;
             print(screen.matrix[i][j]);
         }
     }
+}
+
+void update_screen(void)
+{
+    printf("\033[3J");
+    printf("\033[H");
+    for (int i = 0; i < screen.square.y; i++)
+    {
+        for (int j = 0; j < screen.square.x; j++)
+        {
+            print(screen.matrix[i][j]);
+        }
+    }
+}
+
+void set_scene(scene_struct *scene)
+{
+    int ybegin = (screen.square.y - scene->square.y) / 2;
+    int xbegin = (screen.square.x - scene->square.x) / 2;
+    for (int i = 0; i < scene->square.y; i++)
+    {
+        for (int j = 0; j < scene->square.x; j++)
+        {
+            screen.matrix[ybegin + i][xbegin + j] = scene->matrix[i][j];
+        }
+    }
+    screen.scene = scene;
+    update_screen();
 }
 
 void update(void)
@@ -72,4 +100,3 @@ void update(void)
 //     }
 //     printf("\033[0m");
 // }
-
