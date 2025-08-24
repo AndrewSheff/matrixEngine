@@ -14,9 +14,9 @@ struct screen_struct
 struct log_struct
 {
     coordinates begin_coordinates;
-    long top;
+    int empty_rows;
     char *text; 
-    //TODO координата крусора еще нужна
+    //TODO координата курсора еще нужна
 };
 
 extern struct screen_struct screen;
@@ -27,6 +27,7 @@ object *get_object_on_screen(coordinates *coordinates);
 void init_screen(void);
 void update_screen(void);
 void set_scene(scene_struct *scene);
+void print_to_log(char* text);
 void print(object *object, int y, int x);
 void update(void);
 

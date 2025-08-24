@@ -3,6 +3,14 @@
 
 #include "object.h"
 
+typedef enum
+{
+	SPAWN,
+	MOVE,
+	TELEPORTED,
+	PUSHED,
+} moving_type;
+
 extern object **entities;
 extern int entities_size;
 

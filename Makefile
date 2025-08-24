@@ -2,11 +2,17 @@ CC = clang
 CFLAGS = -Wall -Wextra -std=c17 -g -Iinclude
 SRC = src/main.c src/screen.c src/entity.c src/object.c src/scene.c
 OBJ = $(SRC:.c=.o)
+TARGET = game
 
-all: game
+all: $(TARGET)
 
-game: $(OBJ)
-	$(CC) $(CFLAGS) -o game $(OBJ)
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ) game
+	rm -f $(OBJ) $(TARGET)
+
+.PHONY: all clean

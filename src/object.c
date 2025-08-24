@@ -13,10 +13,10 @@ object *get_object_by_id(char c)
     }
 }
 
-object player = {.value = '@', .bgcolor = -1, .color = 226, .is_solid = false};
+object player = {.name="Игрок", .value = '@', .bgcolor = -1, .color = 226, .is_solid = false};
 
-object empty = {.id = ' ', .is_solid = false, .value = ' ', .color = 0, .bgcolor = 0};
+object empty = { .name = "Пустота", .id = ' ', .is_solid = false, .value = ' ', .color = 0, .bgcolor = 0};
 
-object floor_concrete = {.id = '1', .is_solid = false, .value = ' ', .color = 7, .bgcolor = 7};
+object floor_concrete = { .name = "Бетонная плитка", .id = '1', .is_solid = false, .value = ' ', .color = 7, .bgcolor = 7};
 
-object wall_concrete = {.id = '2', .is_solid = true, .value = '#', .color = 7, .bgcolor = 8};
+object wall_concrete = { .name = "Бетонная стена", .id = '2', .is_solid = true, .value = '#', .color = 7, .bgcolor = 8};

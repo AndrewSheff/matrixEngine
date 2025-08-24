@@ -20,7 +20,7 @@ void add_entity(object *entity)
     entities[entities_size - 1] = entity;
 }
 
-int place(object *object, coordinates new_coor)
+int place(object *object, coordinates new_coor, moving_type type)
 {
     if (
         ((new_coor.x >= 0 && new_coor.x <= (screen.square.x - 1)) && (new_coor.y >= 0 && new_coor.y <= (screen.square.y - 1))) &&
@@ -29,6 +29,11 @@ int place(object *object, coordinates new_coor)
         (*object).old_coordinates = (*object).coordinates;
         (*object).coordinates = new_coor;
     }
+    else {
+        form_message();
+        print_to_log(message);
+    }
+
     return 0;
 }
 int move(object *object, direction direction, int steps)

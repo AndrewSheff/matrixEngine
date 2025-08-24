@@ -9,7 +9,7 @@ typedef enum
     DOWN,
     RIGHT,
     LEFT,
-    ERROR
+    UNDEFINED,
 } direction;
 
 typedef struct
@@ -53,7 +53,8 @@ typedef struct
 
 typedef struct
 {
-    char id;
+    char* name;
+    char id; //для получение обькта из паттерна
     coordinates old_coordinates;
     coordinates coordinates;
     health health;
