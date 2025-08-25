@@ -1,5 +1,27 @@
 #include "object.h"
 
+char* get_direction_label(direction direction) 
+{
+    switch (direction)
+    {
+    case UP:
+        return "РІРІРµСЂС…";
+        break;
+    case DOWN:
+        return "РІРЅРёР·";
+        break;
+    case LEFT:
+        return "РІР»РµРІРѕ";
+        break;
+    case RIGHT:
+        return "РІРїСЂР°РІРѕ";
+        break;
+    default:
+        return "РЅРµРѕРїСЂРµРґРµР»РµРЅРЅРѕ";
+        break;
+    }
+}
+
 object *get_object_by_id(char c)
 {
     switch (c)
@@ -13,10 +35,10 @@ object *get_object_by_id(char c)
     }
 }
 
-object player = {.name="Игрок", .value = '@', .bgcolor = -1, .color = 226, .is_solid = false};
+object player = {.name="пїЅпїЅпїЅпїЅпїЅ", .value = '@', .bgcolor = -1, .color = 226, .is_solid = false};
 
-object empty = { .name = "Пустота", .id = ' ', .is_solid = false, .value = ' ', .color = 0, .bgcolor = 0};
+object empty = { .name = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ", .id = ' ', .is_solid = false, .value = ' ', .color = 0, .bgcolor = 0};
 
-object floor_concrete = { .name = "Бетонная плитка", .id = '1', .is_solid = false, .value = ' ', .color = 7, .bgcolor = 7};
+object floor_concrete = { .name = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ", .id = '1', .is_solid = false, .value = ' ', .color = 7, .bgcolor = 7};
 
-object wall_concrete = { .name = "Бетонная стена", .id = '2', .is_solid = true, .value = '#', .color = 7, .bgcolor = 8};
+object wall_concrete = { .name = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ", .id = '2', .is_solid = true, .value = '#', .color = 7, .bgcolor = 8};

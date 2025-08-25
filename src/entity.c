@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include "entity.h"
 #include "screen.h"
+#include "message.h"
 
 object **entities;
 int entities_size;
@@ -20,7 +21,7 @@ void add_entity(object *entity)
     entities[entities_size - 1] = entity;
 }
 
-int place(object *object, coordinates new_coor, moving_type type)
+int place(object *object, coordinates new_coor, moving_type type, direction direction, int steps)
 {
     if (
         ((new_coor.x >= 0 && new_coor.x <= (screen.square.x - 1)) && (new_coor.y >= 0 && new_coor.y <= (screen.square.y - 1))) &&
@@ -28,12 +29,12 @@ int place(object *object, coordinates new_coor, moving_type type)
     {
         (*object).old_coordinates = (*object).coordinates;
         (*object).coordinates = new_coor;
+        update_out_move_message(type, object, steps, get_direction_label(direction));
+        print_to_log(log_message);
     }
     else {
-        form_message();
-        print_to_log(message);
+        
     }
-
     return 0;
 }
 int move(object *object, direction direction, int steps)
@@ -56,6 +57,6 @@ int move(object *object, direction direction, int steps)
     default:
         break;
     }
-    place(object, new_coor);
+    place(object, new_coor, MOVE, direction, steps);
     return 0;
 }

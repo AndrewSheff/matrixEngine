@@ -2,14 +2,12 @@
 #define MESSAGE_H
 
 #include <stdio.h>
+#include "entity.h"
+#include "object.h"
 
-typedef enum
-{
-	MOVE1,
-} message_type;
+extern char* log_message[100];
 
-char* get_message_by_type(message_type type);
-
-char* form_message(char* message, ...);
+void update_out_move_message(moving_type type, object *object, int steps, char* direction);
+// char* int_to_string(int integer);
 
 #endif

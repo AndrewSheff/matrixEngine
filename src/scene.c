@@ -22,5 +22,4 @@ void init_scene(scene_struct *scene, char **scene_pattern)
             scene->matrix[i][j] = get_object_by_id(scene_pattern[i][j]);
         }
     }
-    // player.coordinates.x = screen.square
 }

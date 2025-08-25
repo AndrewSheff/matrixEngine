@@ -75,7 +75,7 @@ int main(void)
 	init_entities();
 	player.coordinates.y = scene_begin_coordinates.y + 2;
 	player.coordinates.x = scene_begin_coordinates.x + 2;
-	place(&player, player.coordinates);
+	place(&player, player.coordinates, SPAWN, UNDEFINED, 0);
 	update();
 
 	char* action;
@@ -83,6 +83,7 @@ int main(void)
 	while (1)
 	{
 		action = calloc(5, sizeof(char));
+        //TODO при вводе энтера все ломается
 		scanf("%s", action);
 		printf("\033[A\033[K");
 		process_input(action);

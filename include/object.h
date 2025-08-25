@@ -12,6 +12,8 @@ typedef enum
     UNDEFINED,
 } direction;
 
+char* get_direction_label(direction direction);
+
 typedef struct
 {
     int x;
@@ -54,7 +56,7 @@ typedef struct
 typedef struct
 {
     char* name;
-    char id; //для получение обькта из паттерна
+    char id; //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     coordinates old_coordinates;
     coordinates coordinates;
     health health;
