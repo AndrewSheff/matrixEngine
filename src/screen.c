@@ -29,10 +29,17 @@ void print(object* object, int y, int x)
 
 void print_to_log(char* text)
 {
-	if (log_field.empty_rows>0) {
+	if (log_field.empty_rows>=0) {
 		printf("\033[%d;%dH%s", screen.square.y-log_field.empty_rows, log_field.begin_coordinates.x, text);
 		log_field.empty_rows--;
-	}
+	} else {
+        for (int i = screen.square.y + 1; i >= log_field.begin_coordinates.y; i--) {
+            printf("\033[%d;%dH\033[K", i, log_field.begin_coordinates.x);
+        }
+        log_field.empty_rows = screen.square.y - 1;
+        printf("\033[%d;%dH%s", screen.square.y-log_field.empty_rows, log_field.begin_coordinates.x, text);
+		log_field.empty_rows--;
+    }
 }
 
 void init_screen(void)
@@ -49,8 +56,8 @@ void init_screen(void)
 
 	log_field.begin_coordinates.x = screen.square.x + 2;
 	log_field.begin_coordinates.y = 1;
-	log_field.text = calloc(screen.square.y, w.ws_col - log_field.begin_coordinates.x); //(высота лога, ширина лога)
-	log_field.empty_rows = screen.square.y;
+	log_field.text = calloc(screen.square.y + 1, w.ws_col - log_field.begin_coordinates.x); //(высота лога, ширина лога)
+	log_field.empty_rows = screen.square.y - 1;
 
 	printf("\033[3J");
 	printf("\033[H");
@@ -63,7 +70,6 @@ void init_screen(void)
 			print(screen.matrix[i][j], i + 1, j + 1);
 		}
 	}
-	print_to_log("-НАЧАЛО ЛОГА-");
 }
 
 void update_screen(void)

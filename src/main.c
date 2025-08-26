@@ -82,13 +82,19 @@ int main(void)
 
 	while (1)
 	{
-		action = calloc(5, sizeof(char));
-        //TODO при вводе энтера все ломается
-		scanf("%s", action);
-		printf("\033[A\033[K");
-		process_input(action);
-		update();
-		free(action);
+        action = calloc(100, sizeof(char));
+        printf("\033[K");
+        if (fgets(action, 100, stdin) != NULL)
+        {
+            size_t len = sizeof(action);
+            if (len > 0 && action[len-1] == '\n') {
+                action[len-1] = '\0';
+            }
+            printf("\033[A\033[K");
+            process_input(action);
+            update();
+        }
+        free(action);
 	}
 	return 0;
 }
