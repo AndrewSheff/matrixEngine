@@ -24,6 +24,7 @@ extern struct log_struct log_field;
 extern coordinates scene_begin_coordinates;
 
 object *get_object_on_screen(coordinates *coordinates);
+object *get_entity_on_screen(coordinates *coordinates);
 void init_screen(void);
 void update_screen(void);
 void set_scene(scene_struct *scene);

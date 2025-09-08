@@ -16,7 +16,8 @@ extern int entities_size;
 
 void init_entities(void);
 void add_entity(object *entity);
-int place(object *object, coordinates new_coor, moving_type type, direction direction, int steps);
-int move(object *object, direction direction, int steps);
+object *place(object *object, coordinates new_coor, moving_type type, direction direction, int steps);
+object *move(object *object, direction direction, int steps);
+void chase(object *chaser, object *target);
 
 #endif

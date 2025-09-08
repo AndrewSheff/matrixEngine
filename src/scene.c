@@ -3,13 +3,23 @@
 #include "screen.h"
 #include "scene.h"
 
-scene_struct scene_one = {.square.y = 5, .square.x = 10};
-char *scene_one_pattern[5] =
-    {"2222222222",
-     "2111111112",
-     "2111121112",
-     "2111111112",
-     "2222222222"};
+scene_struct scene_one = {.square.y = 13, .square.x = 41};
+char *scene_one_pattern[13] =
+    {
+    "2222222222                               ",
+    "21111111122222222222222222222222222      ",
+    "21111211111111111111111111111111112      ",
+    "21111111122222222222222222222222212      ",
+    "2222222222                      212      ",
+    "                                212      ",
+    "                                212      ",
+    "                                212      ",
+    "                            2222212222222",
+    "                            2111111111112",
+    "                            2111111111112",
+    "                            2111111111112",
+    "                            2222222222222"
+};
 
 void init_scene(scene_struct *scene, char **scene_pattern)
 {
@@ -22,4 +32,4 @@ void init_scene(scene_struct *scene, char **scene_pattern)
             scene->matrix[i][j] = get_object_by_id(scene_pattern[i][j]);
         }
     }
-}
+}   

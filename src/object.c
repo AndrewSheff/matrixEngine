@@ -35,7 +35,9 @@ object *get_object_by_id(char c)
     }
 }
 
-object player = {.name="Игрок", .value = '@', .bgcolor = -1, .color = 226, .is_solid = false};
+object player = {.name="Игрок", .value = '@', .bgcolor = -1, .color = 226, .is_solid = true};
+
+object goblin = {.name="Гоблин", .value = 'g', .bgcolor=-1, .color = 35, .is_solid = true};
 
 object empty = { .name = "Пустота", .id = ' ', .is_solid = false, .value = ' ', .color = 0, .bgcolor = 0};
 

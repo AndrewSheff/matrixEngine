@@ -76,15 +76,18 @@ int main(void)
 	player.coordinates.y = scene_begin_coordinates.y + 2;
 	player.coordinates.x = scene_begin_coordinates.x + 2;
 	place(&player, player.coordinates, SPAWN, UNDEFINED, 0);
+	goblin.coordinates.y = scene_begin_coordinates.y + 2;
+	goblin.coordinates.x = scene_begin_coordinates.x + 7;
+	place(&goblin, goblin.coordinates, SPAWN, UNDEFINED, 0);
+	add_entity(&goblin);
 	update();
-
 	char* action;
 
 	while (1)
 	{
-        action = calloc(100, sizeof(char));
+        action = calloc(5, sizeof(char));
         printf("\033[K");
-        if (fgets(action, 100, stdin) != NULL)
+        if (fgets(action, 5, stdin) != NULL)
         {
             size_t len = sizeof(action);
             if (len > 0 && action[len-1] == '\n') {
@@ -92,6 +95,7 @@ int main(void)
             }
             printf("\033[A\033[K");
             process_input(action);
+			chase(&goblin, &player);
             update();
         }
         free(action);

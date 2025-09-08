@@ -15,6 +15,16 @@ object* get_object_on_screen(coordinates* coordinates)
 	return screen.matrix[coordinates->y][coordinates->x];
 }
 
+object* get_entity_on_screen(coordinates* coordinates)
+{
+	for (int i = 0; i < entities_size; i++) {
+		if (entities[i]->coordinates.x == coordinates->x && entities[i]->coordinates.y == coordinates->y) {
+			return entities[i];
+		}
+	}
+	return &empty;
+}
+
 void print(object* object, int y, int x)
 {
 	if (object->bgcolor == -1)

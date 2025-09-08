@@ -5,9 +5,9 @@
 
 typedef enum
 {
-    UP,
-    DOWN,
+    UP = 0,
     RIGHT,
+    DOWN,
     LEFT,
     UNDEFINED,
 } direction;
@@ -56,7 +56,7 @@ typedef struct
 typedef struct
 {
     char* name;
-    char id; //��� ��������� ������ �� ��������
+    char id;
     coordinates old_coordinates;
     coordinates coordinates;
     health health;
@@ -70,6 +70,7 @@ typedef struct
 object *get_object_by_id(char c);
 
 extern object player;
+extern object goblin;
 extern object empty;
 extern object floor_concrete;
 extern object wall_concrete;
