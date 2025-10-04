@@ -1,6 +1,6 @@
 CC = clang
 CFLAGS = -Wall -Wextra -std=c17 -g -Iinclude
-SRC = src/main.c src/screen.c src/entity.c src/object.c src/scene.c src/message.c
+SRC = src/main.c src/screen.c src/entity.c src/object.c src/scene.c src/message.c src/inventory.c
 OBJ = $(SRC:.c=.o)
 TARGET = game
 

@@ -10,6 +10,7 @@ typedef enum
 
 typedef enum
 {
+    POISON
     //TODO надо придумать
 } effect_type;
 
@@ -33,21 +34,23 @@ typedef enum
 
 typedef struct
 {
-    item_type type,
-    char* name
+    item_type type;
+    char[32] name;
 } item_base_info;
 
 typedef struct
 {
-    item_base_info item,
-    effect_type effect,
-    int satiety
+    item_base_info item;
+    effect_type effect;
+    int satiety;
 } item_food;
 
 typedef struct
 {
-    item_base_info item,
-    weapon_type type,
+    item_base_info item;
+    weapon_type type;
 } item_weapon;
+
+extern item_weapon sword;
 
 #endif

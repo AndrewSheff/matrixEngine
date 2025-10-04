@@ -31,5 +31,6 @@ void set_scene(scene_struct *scene);
 void print_to_log(char* text);
 void print(object *object, int y, int x);
 void update(void);
+void print_inventory(void);
 
 #endif

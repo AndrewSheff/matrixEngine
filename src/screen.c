@@ -3,6 +3,7 @@
 #include "terminal.h"
 #include "screen.h"
 #include "entity.h"
+#include "inventory.h"
 
 struct winsize w;
 struct screen_struct screen;
@@ -120,19 +121,59 @@ void update(void)
 	printf("\033[%d;1H", w.ws_row - 1);
 }
 
-// полное обновление экрана
-//  void print(object* object) {
-//      printf("\033[38;5;%dm%c", object->color, object->value);
-//  }
+void bg_color(int color)
+{
+	printf("\033[48;5;%dm", color);
+}
 
-// void update(void) {
-//     printf("\033[3J\033[48;5;%dm", screen.background_color);
-//     printf("\033[H");
-//     for (int i=0;i<screen.square.y;i++) {
-//         for (int j=0;j<screen.square.x;j++) {
-//             print(screen.matrix[i][j]);
-//         }
-//         printf("\n");
-//     }
-//     printf("\033[0m");
-// }
+void text_color(int color)
+{
+	printf("\033[38;5;%dm", color);
+}
+
+void print_inventory(void)
+{
+	printf("\033[H");
+	printf("\033[2J");
+	bg_color(94);
+	for (int i = 0; i < screen.square.x; i++)
+	{
+		printf("+");
+	}
+	printf("\033[0m\n");
+	//headers
+	bg_color(94);
+	printf("+");
+	bg_color(166);
+	printf("___(W) Weapons___(F) Food");
+	for (int i = 25; i < screen.square.x-2; i++)
+	{
+		printf("_");
+	}
+	bg_color(94);
+	printf("+\033[0m\n");
+	bg_color(94);
+	for (int i = 0; i < screen.square.x; i++)
+	{
+		printf("+");
+	}
+	printf("\033[0m\n");
+	for (int i = 0; i <screen.square.y-4; i++)
+	{
+		bg_color(94);
+		printf("+");
+		bg_color(166);
+		for (int j = 0; j < screen.square.x-2; j++)
+		{
+			printf(" ");
+		}
+		bg_color(94);
+		printf("+\033[0m\n");
+	}
+	bg_color(94);
+	for (int i = 0; i < screen.square.x; i++)
+	{
+		printf("+");
+	}
+	printf("\033[0m\n");
+}

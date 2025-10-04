@@ -4,6 +4,7 @@
 #include "screen.h"
 #include "entity.h"
 #include "scene.h"
+#include "inventory.h"
 
 #ifdef _WIN32
 #include <windows.h>
@@ -52,6 +53,11 @@ void process_input(char* action)
 		break;
 	case 'A':
 		// attack(&player, get_direction(action[1]));
+	case 'i':
+		if (inventory.is_opened==0)
+		{
+			open_inventory();
+		}	
 	default:
 		if (get_direction(action[0]) != UNDEFINED) {
 			move(&player, get_direction(action[0]), 1);
@@ -95,8 +101,11 @@ int main(void)
             }
             printf("\033[A\033[K");
             process_input(action);
+			if (inventory.is_opened == 0)
+			{
 			chase(&goblin, &player);
             update();
+			}
         }
         free(action);
 	}
