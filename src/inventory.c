@@ -1,5 +1,7 @@
 #include "inventory.h"
 #include "screen.h"
+#include "item.c"
+#include <stdlib.h>
 
 struct inventory inventory;
 

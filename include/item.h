@@ -35,7 +35,7 @@ typedef enum
 typedef struct
 {
     item_type type;
-    char[32] name;
+    char* name[32];
 } item_base_info;
 
 typedef struct
